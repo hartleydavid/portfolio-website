@@ -9,11 +9,26 @@ export default function Projects() {
 
 	//Call the API to our backend and fetch the prokects
 	useEffect(() => {
-	  fetch("http://localhost:5000/api/projects") // Call backend API
-		.then((res) => res.json())
-		.then((data) => setProjects(data))
-		.catch((err) => console.error("Error fetching projects:", err));
-	}, []);
+		fetch("http://localhost:5000/graphql", {
+		  method: "POST",
+		  headers: { "Content-Type": "application/json" },
+		  body: JSON.stringify({
+			query: `
+			  query {
+				projects {
+				  id
+				  title
+				  description
+				  technologies
+				}
+			  }
+			`,
+		  }),
+		})
+		  .then((res) => res.json())
+		  .then((data) => setProjects(data.data.projects))
+		  .catch((err) => console.error("Error fetching projects:", err));
+	  }, []);
 
   return (
     <div>
