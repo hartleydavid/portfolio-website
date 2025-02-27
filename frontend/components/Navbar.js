@@ -6,6 +6,7 @@ export default function Navbar() {
       <h1 className="text-xl font-bold">My Portfolio</h1>
       <div>
         <Link href="/">Home</Link>
+        <Link href="/about" className="ml-4">About</Link>
         <Link href="/projects" className="ml-4">Projects</Link>
         <Link href="/work" className="ml-4">Work Experience</Link>
         <Link href="/contact" className="ml-4">Contact</Link>
