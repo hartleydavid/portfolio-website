@@ -34,7 +34,16 @@ const schema = buildSchema(`
   }
 
   type Mutation {
-    addProject(title: String!, description: String!, technologies: [String]!): Project
+    addProject(title: String!, description: String!, status: String!, technologies: [String]!): Project
+    addMultipleProjects(projects: [ProjectInput]!): [Project]
+    deleteAllProjects: String
+  }
+
+  input ProjectInput {
+    title: String!
+    description: String!
+    status: String!
+    technologies: [String]!
   }
 `);
 
@@ -42,10 +51,22 @@ const schema = buildSchema(`
 const root = {
   projects: async () => await Project.find(),
   project: async ({ id }) => await Project.findById(id),
-  addProject: async ({ title, description, technologies }) => {
-    const newProject = new Project({ title, description, technologies });
+
+  addProject: async ({ title, description, status, technologies }) => {
+    const newProject = new Project({ title, description, status, technologies });
     return await newProject.save();
   },
+  // Add multiple projects at once
+  addMultipleProjects: async ({ projects }) => {
+    const newProjects = await Project.insertMany(projects);
+    return newProjects;
+  },
+
+  // Delete all projects Function
+  deleteAllProjects: async () => {
+    await Project.deleteMany({});
+    return "All projects have been deleted!";
+  }
 };
 
 // Create an Express app

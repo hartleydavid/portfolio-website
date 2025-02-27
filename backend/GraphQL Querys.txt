@@ -1,0 +1,17 @@
+mutation {
+  deleteAllProjects
+}
+
+mutation {
+  addMultipleProjects(projects: [
+    { title: "Portfolio Website", description: "Website displaying my experience and work for users to view", status: "In Progress", technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Tailwind CSS"] },
+    { title: "Tournament Bracket Website", description: "Website for users to generate their own tournament brackets and be able to interact with them.", status: "Complete", technologies: ["Azure", "BlobStorage", "C#", "MySQL", "JavaScript", "HTML/CSS"] },
+    { title: "Weather App", description: "A weather application that will display weather information to users for specific dates and location", status: "Complete", technologies: ["React", "JavaScript", "Google Maps API"] }
+  ]) {
+    id
+    title
+    description
+    status
+    technologies
+  }
+}

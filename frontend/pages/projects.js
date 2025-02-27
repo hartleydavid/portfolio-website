@@ -19,6 +19,7 @@ export default function Projects() {
 				  id
 				  title
 				  description
+				  status
 				  technologies
 				}
 			  }
