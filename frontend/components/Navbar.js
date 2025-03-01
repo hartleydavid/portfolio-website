@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/solid"
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -43,7 +44,7 @@ const Navbar = () => {
           download="David_H_Resume.pdf"
           className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300"
         >
-          
+          <ArrowDownTrayIcon className="w-5 h-5" /> 
           Download Resume
         </a>
       </div>
