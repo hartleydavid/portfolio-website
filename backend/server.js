@@ -82,37 +82,3 @@ app.use("/graphql", graphqlHTTP({
 
 // Start the server
 app.listen(5000, () => console.log("Server running on http://localhost:5000/graphql"));
-
-
-/*const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
-
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cors());
-
-// Environment variables
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || "mongodb://database:27017/portfolio"; // Using Docker service name
-
-// Connect to MongoDB
-mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
-
-// Import and use routes
-const projectRoutes = require("./routes/projects"); // ✅ Correct way
-app.use("/api/projects", projectRoutes);
-
-// Default route
-app.get("/", (req, res) => {
-  res.send("Backend is running! 🚀");
-});
-
-// Start the server
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));*/

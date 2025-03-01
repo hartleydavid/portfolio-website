@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { ArrowDownTrayIcon } from "@heroicons/react/24/solid"
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -36,26 +37,19 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+
+        {/* Download Resume Button */}
+        <a
+          href="/Resume.pdf" 
+          download="David_H_Resume.pdf"
+          className="flex items-center gap-2 px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300"
+        >
+          <ArrowDownTrayIcon className="w-5 h-5" /> 
+          Download Resume
+        </a>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
-/*export default function Navbar() {
-
-  return (
-    <nav className="p-4 bg-gray-800 text-white flex justify-between">
-      <h1 className="text-xl font-bold">My Portfolio</h1>
-      <div>
-        <Link href="/">Home</Link>
-        <Link href="/about" className="ml-4">About</Link>
-        <Link href="/projects" className="ml-4">Projects</Link>
-        <Link href="/work" className="ml-4">Work Experience</Link>
-        <Link href="/contact" className="ml-4">Contact</Link>
-
-      </div>
-    </nav>
-  );
-
-}*/
