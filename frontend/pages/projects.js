@@ -37,7 +37,7 @@ export default function Projects() {
 	const getStatusColor = (status) => {
 		//Switch case for the string value of 'status'
 		switch (status.toLowerCase()) {
-			case "completed": //If completed
+			case "complete": //If completed
 				return "bg-green-100 text-green-700";
 			case "in progress"://If in progress
 				return "bg-yellow-100 text-yellow-700";
