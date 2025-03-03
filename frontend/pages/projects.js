@@ -31,35 +31,62 @@ export default function Projects() {
 		  .catch((err) => console.error("Error fetching projects:", err));
 	  }, []);
 
-  return (
-    <div>
-      <Navbar />
-      <div className="min-h-screen bg-gray-100 py-10 px-6">
-		  <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">My Projects</h1>
-		  
-		  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	// Function to get status color
+	const getStatusColor = (status) => {
+		switch (status.toLowerCase()) {
+		case "completed":
+			return "bg-green-100 text-green-700";
+		case "in progress":
+			return "bg-yellow-100 text-yellow-700";
+		case "planned":
+			return "bg-gray-100 text-gray-700";
+		default:
+			return "bg-blue-100 text-blue-700";
+		}
+	};
+
+	return (
+		<div>
+		<Navbar />
+		<div className="min-h-screen bg-gray-50 py-12 px-6">
+			<h1 className="text-5xl font-extrabold text-center text-blue-600 mb-10">
+			My Projects
+			</h1>
+
+			<div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 			{projects.map((project) => (
-			  <div key={project._id} className="bg-white shadow-md rounded-lg p-6">
-				<h2 className="text-2xl font-semibold text-gray-800">{project.title}</h2>
-				<p className="text-gray-600 mt-2">{project.description}</p>
-				<p className="mt-3 text-sm text-gray-500">
-				  <strong>Status:</strong> <span className="text-blue-500">{project.status}</span>
-				</p>
-	
-				<div className="mt-3">
-				  <p className="font-semibold text-gray-700">Technologies Used:</p>
-				  <div className="flex flex-wrap gap-2 mt-2">
+				<div
+				key={project.id}
+				className="bg-white shadow-lg rounded-xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-2xl"
+				>
+				<h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
+				<p className="text-gray-700 mt-2">{project.description}</p>
+
+				<span
+					className={`inline-block px-3 py-1 mt-4 text-sm font-semibold rounded-full ${getStatusColor(
+					project.status
+					)}`}
+				>
+					{project.status}
+				</span>
+
+				<div className="mt-4">
+					<p className="text-gray-800 font-semibold">Technologies Used:</p>
+					<div className="flex flex-wrap gap-2 mt-2">
 					{project.technologies?.map((tech, index) => (
-					  <span key={index} className="bg-blue-100 text-blue-600 px-2 py-1 text-xs font-medium rounded-full">
+						<span
+						key={index}
+						className="bg-blue-500 text-white px-3 py-1 text-xs font-medium rounded-full shadow"
+						>
 						{tech}
-					  </span>
+						</span>
 					))}
-				  </div>
+					</div>
 				</div>
-			  </div>
+				</div>
 			))}
-		  </div>
+			</div>
 		</div>
-    </div>
-  );
+		</div>
+	);
 }

@@ -5,7 +5,9 @@ export default function Home() {
     <div>
       <Navbar />
       <main className="p-4">
-        <h2 className="text-4xl font-bold text-blue-600">About Me:</h2>
+      <h1 className="text-5xl font-extrabold text-center text-blue-600 mb-10">
+			  About Me
+			</h1>
       </main>
     </div>
   );

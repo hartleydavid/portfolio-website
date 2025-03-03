@@ -39,7 +39,7 @@ export default function Home() {
         <div className="w-full md:w-1/3 flex justify-center">
           <Image
             src="/me.jpg" // Replace with your actual image path
-            alt="Your Name"
+            alt="Image of Myself"
             width={300}
             height={300}
             className="rounded-full shadow-lg border-4 border-white"
