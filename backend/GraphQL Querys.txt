@@ -4,9 +4,54 @@ mutation {
 
 mutation {
   addMultipleProjects(projects: [
-    { title: "Portfolio Website", description: "Website displaying my experience and work for users to view", status: "In Progress", technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Tailwind CSS"] },
-    { title: "Tournament Bracket Website", description: "Website for users to generate their own tournament brackets and be able to interact with them.", status: "Complete", technologies: ["Azure", "BlobStorage", "C#", "MySQL", "JavaScript", "HTML/CSS"] },
-    { title: "Weather App", description: "A weather application that will display weather information to users for specific dates and location", status: "Complete", technologies: ["React", "JavaScript", "Google Maps API"] }
+    { 
+      title: "Portfolio Website", 
+      description: "Website displaying my experience and work for users to view", 
+      status: "In Progress", 
+      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Tailwind CSS"] 
+    },
+    { 
+      title: "Tournament Bracket Website", 
+      description: "Website for users to generate their own tournament brackets and be able to interact with them.", 
+      status: "Complete", 
+      technologies: ["Azure", "BlobStorage", "C#", "MySQL", "JavaScript", "HTML/CSS"] 
+    },
+    { 
+      title: "Weather App", 
+      description: "A weather application that will display weather information to users for specific dates and location", 
+      status: "Complete", 
+      technologies: ["React", "JavaScript", "Google Maps API"] 
+    },
+    {
+    title: "E-Commerce Platform",
+    description: "A full-stack online store with user authentication, payments, and product management.",
+    status: "Completed",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Tailwind CSS"]
+  },
+  {
+    title: "Task Manager App",
+    description: "A web application to help users manage tasks, set deadlines, and track progress.",
+    status: "In Progress",
+    technologies: ["Vue.js", "Node.js", "GraphQL", "PostgreSQL", "Docker", "Tailwind CSS"]
+  },
+  {
+    title: "Fitness Tracker",
+    description: "An app that allows users to log workouts, track calories, and monitor progress.",
+    status: "Planned",
+    technologies: ["React Native", "Firebase", "GraphQL", "Node.js", "Tailwind CSS"]
+  },
+  {
+    title: "Blog Platform",
+    description: "A markdown-powered blogging platform with user authentication and commenting features.",
+    status: "Completed",
+    technologies: ["Next.js", "Node.js", "GraphQL", "MongoDB", "Tailwind CSS"]
+  },
+  {
+    title: "Job Board Website",
+    description: "A web app where users can post and apply for jobs, with filtering and search functionality.",
+    status: "In Progress",
+    technologies: ["Angular", "NestJS", "GraphQL", "PostgreSQL", "Tailwind CSS", "Docker"]
+  }
   ]) {
     id
     title
