@@ -25,7 +25,7 @@ mutation {
     {
     title: "E-Commerce Platform",
     description: "A full-stack online store with user authentication, payments, and product management.",
-    status: "Completed",
+    status: "Complete",
     technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Tailwind CSS"]
   },
   {
@@ -43,7 +43,7 @@ mutation {
   {
     title: "Blog Platform",
     description: "A markdown-powered blogging platform with user authentication and commenting features.",
-    status: "Completed",
+    status: "Complete",
     technologies: ["Next.js", "Node.js", "GraphQL", "MongoDB", "Tailwind CSS"]
   },
   {
