@@ -6,8 +6,8 @@ const cors = require("cors");
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI || "mongodb://database:27017/portfolio", {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 //Connect to the Database
@@ -49,24 +49,24 @@ const schema = buildSchema(`
 
 // Define resolvers
 const root = {
-	projects: async () => await Project.find(),
-	project: async ({ id }) => await Project.findById(id),
+    projects: async () => await Project.find(),
+    project: async ({ id }) => await Project.findById(id),
 
-	addProject: async ({ title, description, status, technologies }) => {
-		const newProject = new Project({ title, description, status, technologies });
-		return await newProject.save();
-	},
-	// Add multiple projects at once
-	addMultipleProjects: async ({ projects }) => {
-		const newProjects = await Project.insertMany(projects);
-		return newProjects;
-	},
+    addProject: async ({ title, description, status, technologies }) => {
+        const newProject = new Project({ title, description, status, technologies });
+        return await newProject.save();
+    },
+    // Add multiple projects at once
+    addMultipleProjects: async ({ projects }) => {
+        const newProjects = await Project.insertMany(projects);
+        return newProjects;
+    },
 
-	// Delete all projects Function
-	deleteAllProjects: async () => {
-		await Project.deleteMany({});
-		return "All projects have been deleted!";
-	}
+    // Delete all projects Function
+    deleteAllProjects: async () => {
+        await Project.deleteMany({});
+        return "All projects have been deleted!";
+    }
 };
 
 // Create an Express app
@@ -75,9 +75,9 @@ app.use(cors());
 
 // Set up GraphQL API
 app.use("/graphql", graphqlHTTP({
-	schema,
-	rootValue: root,
-	graphiql: true, // Enables GraphiQL UI for testing
+    schema,
+    rootValue: root,
+    graphiql: true, // Enables GraphiQL UI for testing
 }));
 
 // Start the server

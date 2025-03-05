@@ -98,7 +98,7 @@ export default function Projects() {
 	};
 
 	return (
-		<div>
+		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 text-white flex flex-col pt-16">
 			<Navbar />
 			<div className="min-h-screen bg-gray-50 py-12 px-6">
 				<h1 className="text-5xl font-extrabold text-center text-blue-600 mb-10">
