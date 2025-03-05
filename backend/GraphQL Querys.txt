@@ -47,6 +47,12 @@ mutation {
       technologies: ["Github",  "Java"] 
     },
     { 
+      title: "2D Platformer Video Game", 
+      description: "Very simple 2D plaformer video game developed and ran through the Unity engine using Untiy assets.", 
+      status: "Complete", 
+      technologies: ["Unity", "Github", "C#"] 
+    },
+    { 
       title: "Elimination Raffle Wheel Webpage", 
       description: "Simple Raffle wheel where users can add a list of names to the wheel and each spin that name is removed from the wheel.", 
       status: "In Progress", 
@@ -61,3 +67,10 @@ mutation {
     technologies
   }
 }
+
+    { 
+      title: "", 
+      description: "", 
+      status: "", 
+      technologies: [] 
+    },
