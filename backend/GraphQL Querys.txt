@@ -6,52 +6,53 @@ mutation {
   addMultipleProjects(projects: [
     { 
       title: "Portfolio Website", 
-      description: "Website displaying my experience and work for users to view", 
-      status: "In Progress", 
-      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Tailwind CSS"] 
+      description: "Website displaying my experience and work for users to view and contact me if desired.", 
+      status: "Complete", 
+      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Github", "JavaScript", "TypeScript", "Tailwind CSS"] 
     },
     { 
       title: "Tournament Bracket Website", 
-      description: "Website for users to generate their own tournament brackets and be able to interact with them.", 
+      description: "End-to-end website for users to generate their own tournament brackets and be able to interact with them. Designed for a freelance project and is specifically tailored to customers' design needs", 
       status: "Complete", 
-      technologies: ["Azure", "BlobStorage", "C#", "MySQL", "JavaScript", "HTML/CSS"] 
+      technologies: ["Azure", "BlobStorage", "ASP.NET Core", "MVC Architecture", "Azure SQL Server", "Azure Database", "Github", "C#", "MySQL", "JavaScript", "HTML", "CSS"] 
     },
     { 
       title: "Weather App", 
-      description: "A weather application that will display weather information to users for specific dates and location", 
+      description: "A weather application that will display weather information to users based on a specific date in the future and a pinned loaction on a map.", 
       status: "Complete", 
-      technologies: ["React", "JavaScript", "Google Maps API"] 
+      technologies: ["React", "Google Maps API", "Github", "JavaScript", "HTML", "CSS"] 
     },
-    {
-    title: "E-Commerce Platform",
-    description: "A full-stack online store with user authentication, payments, and product management.",
-    status: "Complete",
-    technologies: ["React", "Node.js", "Express", "MongoDB", "Stripe", "Tailwind CSS"]
-  },
-  {
-    title: "Task Manager App",
-    description: "A web application to help users manage tasks, set deadlines, and track progress.",
-    status: "In Progress",
-    technologies: ["Vue.js", "Node.js", "GraphQL", "PostgreSQL", "Docker", "Tailwind CSS"]
-  },
-  {
-    title: "Fitness Tracker",
-    description: "An app that allows users to log workouts, track calories, and monitor progress.",
-    status: "Planned",
-    technologies: ["React Native", "Firebase", "GraphQL", "Node.js", "Tailwind CSS"]
-  },
-  {
-    title: "Blog Platform",
-    description: "A markdown-powered blogging platform with user authentication and commenting features.",
-    status: "Complete",
-    technologies: ["Next.js", "Node.js", "GraphQL", "MongoDB", "Tailwind CSS"]
-  },
-  {
-    title: "Job Board Website",
-    description: "A web app where users can post and apply for jobs, with filtering and search functionality.",
-    status: "In Progress",
-    technologies: ["Angular", "NestJS", "GraphQL", "PostgreSQL", "Tailwind CSS", "Docker"]
-  }
+    { 
+      title: "Serverless Web Application on AWS", 
+      description: "Website that is deployed on AWS that is a serverless, static website using many of AWS's tools and technologies.", 
+      status: "Complete", 
+      technologies: ["AWS", "AWS Lambda", "S3 Bucket", "AWS RDS", "API Gateways", "REST API", "Github", "MySQL", "Python", "HTML", "CSS"] 
+    },
+    { 
+      title: "IMBD Clone Webpage", 
+      description: "Webpage that simulates IMBD's website, displaying popular show and movie data to the user. Dynamic webpage seamlessly integrating external API's to enhance user experience with real-time data.", 
+      status: "Complete", 
+      technologies: ["Azure", "ASP.NET Core", "MVC Architecture", "Azure SQL Server", "Azure Database", "Identity Frameworks", "TMBD API", "Github", "C#", "JavaScript", "MySQL", "HTML", "CSS"] 
+    },
+    { 
+      title: "AI for Tic-Tac-Toe Game", 
+      description: "Developed a Game Tree AI and Cup AI for a locally ran Tic-Tac-Toe game via console or GUI. Users can chose difficulty of AI, which allows AI to play hundreds of games on a background thread to learn moves. ", 
+      status: "Complete", 
+      technologies: ["Artifical Intelligence", "Swing UI", "Multi-Threading", "Github", "Java"] 
+    },
+    { 
+      title: "OS Scheduler Simulation", 
+      description: "Simulated several operating system scheduling methods and calculated and displayed average turnaround and response times. Methods include First Come First Serve (FCFS), Shortest Job First (SJF), Shorted Time to Complete First(STCF), Round Robin, and Multi-Level Feedback Query (MLFQ) algorithms.", 
+      status: "Complete", 
+      technologies: ["Github",  "Java"] 
+    },
+    { 
+      title: "Elimination Raffle Wheel Webpage", 
+      description: "Simple Raffle wheel where users can add a list of names to the wheel and each spin that name is removed from the wheel.", 
+      status: "In Progress", 
+      technologies: ["Github", "JavaScript", "HTML", "CSS"] 
+    },
+    
   ]) {
     id
     title

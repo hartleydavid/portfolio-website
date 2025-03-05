@@ -3,12 +3,12 @@ import Navbar from "../components/Navbar";
 
 export default function Home() {
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 text-white flex flex-col">
+		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 text-white flex flex-col pt-16">
 			{/* Navbar */}
 			<Navbar />
 
 			{/* Hero Section */}
-			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 px-6 md:px-12">
+			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 w-full px-6 md:px-12">
 				{/* Left Content */}
 				<div className="text-center md:text-left">
 					<h1 className="text-5xl md:text-6xl font-extrabold animate-fadeIn">
@@ -36,13 +36,13 @@ export default function Home() {
 				</div>
 
 				{/* Right Image */}
-				<div className="w-full md:w-1/3 flex justify-center">
+				<div className="w-full md:w-1/3 flex justify-center mt-6 md:mt-0">
 					<Image
 						src="/me.jpg" // Replace with your actual image path
 						alt="Image of Myself"
-						width={300}
-						height={300}
-						className="rounded-full shadow-lg border-4 border-white"
+						width={320}
+						height={320}
+						className="rounded-lg shadow-lg border-4 border-white"
 					/>
 				</div>
 			</div>
