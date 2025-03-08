@@ -7,7 +7,7 @@ export default function Projects() {
 	const [statusFilter, setStatusFilter] = useState("");
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
 
-	//Use effect to fetch the projects from our graphQL API
+	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
 		fetch("http://localhost:5000/graphql", {
 			method: "POST",
