@@ -9,14 +9,16 @@ export default function Home() {
 			<Navbar />
 			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 px-6 md:px-12">
 				<div className="text-center md:text-left">
+					{/* "Title" */}
 					<h1 className="text-5xl md:text-6xl font-extrabold animate-fadeIn">
 						Hi, I'm <span className="text-yellow-300 dark:text-yellow-400">David</span>
 					</h1>
+					{/* Subline Text */}
 					<p className="mt-4 text-lg md:text-xl max-w-lg text-gray-200 dark:text-gray-400">
 						A passionate <span className="font-semibold">Software Developer</span> from Bothell, WA
 					</p>
 
-					{/* CTA Buttons */}
+					{/* In-Page Buttons to Projects and Contact pages*/}
 					<div className="mt-6 flex flex-col md:flex-row gap-4">
 						<a
 							href="/projects"
@@ -33,10 +35,10 @@ export default function Home() {
 					</div>
 				</div>
 
-				{/* Right Image */}
+				{/* Image of myself to the right */}
 				<div className="w-full md:w-1/3 flex justify-center mt-6 md:mt-0">
 					<Image
-						src="/me.jpg" // Replace with your actual image path
+						src="/me.jpg"
 						alt="Image of Myself"
 						width={320}
 						height={320}
