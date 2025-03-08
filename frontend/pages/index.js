@@ -6,7 +6,9 @@ export default function Home() {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 dark:from-gray-900 dark:to-black text-white flex flex-col">
+			{ /* Navbar Component */}
 			<Navbar />
+			
 			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 px-6 md:px-12">
 				<div className="text-center md:text-left">
 					{/* "Title" */}
