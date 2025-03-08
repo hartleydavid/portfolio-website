@@ -7,6 +7,7 @@ export default function Projects() {
 	const [statusFilter, setStatusFilter] = useState("");
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
 
+	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
 		fetch("http://localhost:5000/graphql", {
 			method: "POST",
@@ -32,16 +33,22 @@ export default function Projects() {
 			.catch((err) => console.error("Error fetching projects:", err));
 	}, []);
 
-	// Function to get status color for each project
+	/** Helper function that will return the tailwind css classname string
+	 * for the status of our projects
+	 * 
+	 * @param {*} status The Status of this project that calls the function
+	 * @returns The tailwindcss classname string of the project to get the correct color
+	 */
 	const getStatusColor = (status) => {
+		//Switch case for each of the possible colors of status's
 		switch (status.toLowerCase()) {
-			case "complete":
+			case "complete": //Green for complete
 				return "bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100";
-			case "in progress":
+			case "in progress":// Yellow for in progress
 				return "bg-yellow-100 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100";
-			case "planned":
+			case "planned"://Grey for planned
 				return "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300";
-			default:
+			default:// Default is blue, there is an error or typo in status of project
 				return "bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100";
 		}
 	};
@@ -51,43 +58,67 @@ export default function Projects() {
 		...new Set(projects.flatMap((project) => project.technologies)),
 	];
 
-	// Handle Status Filter
+	/** Helper function that will filter our projects when the status filter is upated
+	 * 
+	 * @param {*} e: The status value we want to filter by 
+	 */
 	const handleStatusChange = (e) => {
+		//Set the new status filter
 		setStatusFilter(e.target.value);
+		//Filter the projects
 		filterProjects(e.target.value, selectedTechnologies);
 	};
 
-	// Handle Technology Filter Toggle
+	/** Helper function that will update the list of technologies selected when we select/deselect a technology
+	 * from the list on the page
+	 * 
+	 * @param {*} tech: The newly changed technology
+	 */
 	const toggleTechnology = (tech) => {
+		//If we have the selected tech already, filter back in all values in without this value (deselected), otherwise append new tech
 		const updatedTechnologies = selectedTechnologies.includes(tech)
 			? selectedTechnologies.filter((t) => t !== tech)
 			: [...selectedTechnologies, tech];
 
+		//Call the setter to update our list of selected technologies
 		setSelectedTechnologies(updatedTechnologies);
+		//Filter the projects with our new tech filter
 		filterProjects(statusFilter, updatedTechnologies);
 	};
 
-	// Filtering Function
+	/** Function that will filter the projects based on the technologies selected
+	 * 
+	 * @param {*} status: The status of the project (all, complete, in progess, planned) filter for out returning dataset
+	 * @param {*} technologies: A set of selected technologies (strings) that we want to filter our returning dataset to only include
+	 */
 	const filterProjects = (status, technologies) => {
+		//Set the filtered projects equal to the current list of projects
 		let filtered = projects;
 
+		//If we are updating the status filter
 		if (status) {
+			//Filter the dataset
 			filtered = filtered.filter((project) => project.status === status);
 		}
 
+		//If we have selected at least 1 technology to filter by
 		if (technologies.length > 0) {
+			//Filter the projects by the technologies
 			filtered = filtered.filter((project) =>
 				project.technologies.some((tech) => technologies.includes(tech))
 			);
 		}
 
+		//Set the filtered projects to our newly filtered projects list
 		setFilteredProjects(filtered);
 	};
 
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 dark:from-gray-900 dark:to-black text-white flex flex-col pt-16">
+			{/* Navbar */}
 			<Navbar />
 			<div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6">
+				{/* Title */}
 				<h1 className="text-5xl font-extrabold text-center text-blue-600 dark:text-blue-400 mb-10">
 					My Projects
 				</h1>
@@ -112,15 +143,15 @@ export default function Projects() {
 					{/* Technology Filter */}
 					<div className="w-full md:w-auto">
 						<div className="flex flex-wrap gap-2 mt-2">
+							{/* As we select tech to filter, update the technologies filter of our dataset */}
 							{allTechnologies.map((tech) => (
 								<button
 									key={tech}
 									onClick={() => toggleTechnology(tech)}
-									className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${
-										selectedTechnologies.includes(tech)
+									className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${selectedTechnologies.includes(tech)
 											? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
 											: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
-									}`}
+										}`}
 								>
 									{tech}
 								</button>
