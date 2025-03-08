@@ -1,20 +1,18 @@
 import Image from "next/image";
 import Navbar from "../components/Navbar";
 
-export default function Home() {
-	return (
-		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 text-white flex flex-col pt-16">
-			{/* Navbar */}
-			<Navbar />
 
-			{/* Hero Section */}
-			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 w-full px-6 md:px-12">
-				{/* Left Content */}
+export default function Home() {
+
+	return (
+		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 dark:from-gray-900 dark:to-black text-white flex flex-col">
+			<Navbar />
+			<div className="flex flex-col-reverse md:flex-row items-center justify-center flex-1 px-6 md:px-12">
 				<div className="text-center md:text-left">
 					<h1 className="text-5xl md:text-6xl font-extrabold animate-fadeIn">
-						Hi, I'm <span className="text-yellow-300">David</span>
+						Hi, I'm <span className="text-yellow-300 dark:text-yellow-400">David</span>
 					</h1>
-					<p className="mt-4 text-lg md:text-xl max-w-lg">
+					<p className="mt-4 text-lg md:text-xl max-w-lg text-gray-200 dark:text-gray-400">
 						A passionate <span className="font-semibold">Software Developer</span> from Bothell, WA
 					</p>
 

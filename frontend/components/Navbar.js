@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { ArrowDownTrayIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon, ArrowDownTrayIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { useDarkMode } from "../pages/_app";
+
 
 const Navbar = () => {
+    const { darkMode, toggleDarkMode } = useDarkMode();
+
     const router = useRouter();
     const [menuOpen, setMenuOpen] = useState(false);
 
-    //Link Paths in the Page
+
     const navLinks = [
         { name: "Home", path: "/" },
         { name: "About", path: "/about" },
@@ -16,9 +20,9 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className="w-full bg-gray-900 text-white p-4 shadow-md fixed top-0 left-0 z-50">
+        <nav className="w-full bg-gray-900 dark:bg-gray-800 text-white p-4 shadow-md fixed top-0 left-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
-                {/*Title*/}
+                {/* Title */}
                 <h1 className="text-2xl font-bold">David's Portfolio</h1>
 
                 {/* Desktop Navigation */}
@@ -26,10 +30,9 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <li key={link.path}>
                             <Link href={link.path}>
-                                {/* Have the current tab highlighted on the navbar*/}
                                 <span
                                     className={`cursor-pointer px-4 py-2 rounded-md text-lg transition duration-300 
-                  ${router.pathname === link.path
+                    ${router.pathname === link.path
                                             ? "bg-blue-600 text-white"
                                             : "text-gray-300 hover:text-white hover:bg-gray-700"
                                         }`}
@@ -41,7 +44,19 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                {/* Download Resume Button (Hidden on Small Screens, moved to dropdown menu) */}
+                {/* Dark Mode Toggle */}
+                <button
+                    onClick={toggleDarkMode}
+                    className="ml-4 p-2 rounded-lg bg-gray-700 hover:bg-gray-600 dark:bg-gray-700 dark:hover:bg-gray-300"
+                >
+                    { !darkMode ? (
+                        <SunIcon className="w-6 h-6 text-yellow-400" />
+                    ) : (
+                        <MoonIcon className="w-6 h-6 text-gray-300" />
+                    )}
+                </button>
+
+                {/* Download Resume Button (Hidden on Small Screens) */}
                 <a
                     href="/Resume.pdf"
                     download="David_H_Resume.pdf"
@@ -51,7 +66,7 @@ const Navbar = () => {
                     Download Resume
                 </a>
 
-                {/* Mobile Menu Button (Screen gets too small to fit all links)*/}
+                {/* Mobile Menu Button */}
                 <button
                     className="md:hidden text-white focus:outline-none"
                     onClick={() => setMenuOpen(!menuOpen)}
@@ -62,21 +77,36 @@ const Navbar = () => {
 
             {/* Mobile Dropdown Menu */}
             {menuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-gray-900 p-4 space-y-4">
+                <div className="md:hidden absolute top-full left-0 w-full bg-gray-900 dark:bg-gray-800 p-4 space-y-4">
                     {navLinks.map((link) => (
                         <Link key={link.path} href={link.path}>
                             <span
                                 onClick={() => setMenuOpen(false)} // Close menu on click
                                 className={`block px-4 py-2 text-lg text-white rounded-md transition duration-300 
-                ${router.pathname === link.path
-                                        ? "bg-blue-600"
-                                        : "hover:bg-gray-700"
-                                    }`}
+                  ${router.pathname === link.path ? "bg-blue-600" : "hover:bg-gray-700"}`}
                             >
                                 {link.name}
                             </span>
                         </Link>
                     ))}
+
+                    {/* Dark Mode Toggle for Mobile */}
+                    <button
+                        onClick={toggleDarkMode}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 dark:bg-gray-200 dark:hover:bg-gray-300 rounded-lg"
+                    >
+                        {!darkMode ? (
+                            <>
+                                <SunIcon className="w-5 h-5 text-yellow-400" />
+                                <span className="text-white dark:text-black">Light Mode</span>
+                            </>
+                        ) : (
+                            <>
+                                <MoonIcon className="w-5 h-5 text-gray-300" />
+                                <span className="text-white dark:text-black">Dark Mode</span>
+                            </>
+                        )}
+                    </button>
 
                     {/* Download Resume Button for Mobile */}
                     <a
