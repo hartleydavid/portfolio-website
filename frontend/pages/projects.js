@@ -7,7 +7,6 @@ export default function Projects() {
 	const [statusFilter, setStatusFilter] = useState("");
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
 
-
 	useEffect(() => {
 		fetch("http://localhost:5000/graphql", {
 			method: "POST",
@@ -35,16 +34,15 @@ export default function Projects() {
 
 	// Function to get status color for each project
 	const getStatusColor = (status) => {
-		//Switch case for the string value of 'status'
 		switch (status.toLowerCase()) {
-			case "complete": //If completed
-				return "bg-green-100 text-green-700";
-			case "in progress"://If in progress
-				return "bg-yellow-100 text-yellow-700";
-			case "planned"://If planned
-				return "bg-gray-100 text-gray-700";
-			default://Default case, missing status
-				return "bg-blue-100 text-blue-700";
+			case "complete":
+				return "bg-green-100 text-green-700 dark:bg-green-700 dark:text-green-100";
+			case "in progress":
+				return "bg-yellow-100 text-yellow-700 dark:bg-yellow-700 dark:text-yellow-100";
+			case "planned":
+				return "bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300";
+			default:
+				return "bg-blue-100 text-blue-700 dark:bg-blue-700 dark:text-blue-100";
 		}
 	};
 
@@ -55,65 +53,54 @@ export default function Projects() {
 
 	// Handle Status Filter
 	const handleStatusChange = (e) => {
-		//Setter for how to filter
 		setStatusFilter(e.target.value);
-		//Filter the projects by status
 		filterProjects(e.target.value, selectedTechnologies);
 	};
 
 	// Handle Technology Filter Toggle
 	const toggleTechnology = (tech) => {
-		//Update the technologies that have been selected for filtering
 		const updatedTechnologies = selectedTechnologies.includes(tech)
 			? selectedTechnologies.filter((t) => t !== tech)
 			: [...selectedTechnologies, tech];
 
-		//Set the selected technologies for filtering
 		setSelectedTechnologies(updatedTechnologies);
-		//Filter the projects
 		filterProjects(statusFilter, updatedTechnologies);
 	};
 
 	// Filtering Function
 	const filterProjects = (status, technologies) => {
-		//Get the projects list by reference
 		let filtered = projects;
 
-		//If we are filtering by status
 		if (status) {
-			//Filter the set by only selecting the projects with the same status value
 			filtered = filtered.filter((project) => project.status === status);
 		}
 
-		//If we have selected any technologies for filtering (At least 1 tech.)
 		if (technologies.length > 0) {
-			//Filter the set by the projects that have the tech in its tech list
 			filtered = filtered.filter((project) =>
 				project.technologies.some((tech) => technologies.includes(tech))
 			);
 		}
 
-		//Set the projects to the new filtered state 
 		setFilteredProjects(filtered);
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 text-white flex flex-col pt-16">
+		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 dark:from-gray-900 dark:to-black text-white flex flex-col pt-16">
 			<Navbar />
-			<div className="min-h-screen bg-gray-50 py-12 px-6">
-				<h1 className="text-5xl font-extrabold text-center text-blue-600 mb-10">
+			<div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-6">
+				<h1 className="text-5xl font-extrabold text-center text-blue-600 dark:text-blue-400 mb-10">
 					My Projects
 				</h1>
 
 				{/* Filters Section */}
 				<div className="max-w-7xl mx-auto flex flex-col md:flex-col items-center justify-between mb-10 space-y-4">
 
-					{/* Status Dropdown - Always on Top */}
+					{/* Status Dropdown */}
 					<div className="w-full md:w-auto">
 						<select
 							onChange={handleStatusChange}
 							value={statusFilter}
-							className="border border-gray-300 rounded-md px-4 py-2 text-gray-700 focus:ring focus:ring-blue-300 w-full"
+							className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring focus:ring-blue-300 w-full"
 						>
 							<option value="">All Statuses</option>
 							<option value="Complete">Completed</option>
@@ -122,17 +109,18 @@ export default function Projects() {
 						</select>
 					</div>
 
-					{/* Technology Filter - Always Below */}
+					{/* Technology Filter */}
 					<div className="w-full md:w-auto">
 						<div className="flex flex-wrap gap-2 mt-2">
 							{allTechnologies.map((tech) => (
 								<button
 									key={tech}
 									onClick={() => toggleTechnology(tech)}
-									className={`px-3 py-1 text-sm rounded-full ${selectedTechnologies.includes(tech)
-										? "bg-blue-500 text-white"
-										: "bg-gray-200 text-gray-700"
-										}`}
+									className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${
+										selectedTechnologies.includes(tech)
+											? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
+											: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+									}`}
 								>
 									{tech}
 								</button>
@@ -141,16 +129,15 @@ export default function Projects() {
 					</div>
 				</div>
 
-
 				{/* Project Cards */}
 				<div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 					{filteredProjects.map((project) => (
 						<div
 							key={project.id}
-							className="bg-white shadow-lg rounded-xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-2xl"
+							className="bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-700 rounded-xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-2xl"
 						>
-							<h2 className="text-2xl font-bold text-gray-900">{project.title}</h2>
-							<p className="text-gray-700 mt-2">{project.description}</p>
+							<h2 className="text-2xl font-bold text-gray-900 dark:text-gray-200">{project.title}</h2>
+							<p className="text-gray-700 dark:text-gray-300 mt-2">{project.description}</p>
 
 							<span
 								className={`inline-block px-3 py-1 mt-4 text-sm font-semibold rounded-full ${getStatusColor(
@@ -161,12 +148,12 @@ export default function Projects() {
 							</span>
 
 							<div className="mt-4">
-								<p className="text-gray-800 font-semibold">Technologies Used:</p>
+								<p className="text-gray-800 dark:text-gray-300 font-semibold">Technologies Used:</p>
 								<div className="flex flex-wrap gap-2 mt-2">
 									{project.technologies?.map((tech, index) => (
 										<span
 											key={index}
-											className="bg-blue-500 text-white px-3 py-1 text-xs font-medium rounded-full shadow"
+											className="bg-blue-500 dark:bg-blue-400 text-white dark:text-gray-900 px-3 py-1 text-xs font-medium rounded-full shadow"
 										>
 											{tech}
 										</span>

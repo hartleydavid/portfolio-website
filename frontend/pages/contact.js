@@ -3,15 +3,15 @@ import Navbar from "../components/Navbar"; // Ensure this is the correct path
 
 export default function Contact() {
     return (
-        <div className="min-h-screen flex flex-col bg-gray-100">
+		<div className="min-h-screen bg-gradient-to-b from-blue-500 to-indigo-700 dark:from-gray-900 dark:to-black text-white flex flex-col pt-16">
             {/* Navbar */}
             <Navbar />
 
             {/* Contact Section */}
-            <div className="flex flex-1 items-center justify-center px-6">
-                <div className="max-w-2xl w-full bg-white shadow-lg rounded-xl p-8">
-                    <h1 className="text-4xl font-bold text-gray-900 mb-6 text-center">Contact Me</h1>
-                    <p className="text-gray-600 text-center mb-8">
+            <div className="flex flex-1 items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-6">
+                <div className="max-w-2xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-xl p-8">
+                    <h1 className="text-5xl font-extrabold text-center text-blue-600 dark:text-blue-400 mb-10">Contact Me</h1>
+                    <p className="text-gray-600 dark:text-gray-200 text-center mb-8">
                         Feel free to reach out via email or connect with me on LinkedIn and GitHub.
                     </p>
 
