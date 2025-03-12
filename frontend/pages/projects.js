@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 
 export default function Projects() {
+	
 	const [projects, setProjects] = useState([]);
 	const [filteredProjects, setFilteredProjects] = useState([]);
 	const [statusFilter, setStatusFilter] = useState("");
