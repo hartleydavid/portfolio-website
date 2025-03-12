@@ -13,8 +13,8 @@ export default function Projects() {
 		fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
 			method: "POST",
 			headers: { 
-				"Content-Type": "application/json",
-				"Authorization": "Bearer ${process.env.API_KEY}"
+				"Authorization": process.env.API_KEY,
+				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
 				query: `
