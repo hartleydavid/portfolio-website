@@ -14,7 +14,7 @@ export default function Projects() {
 		fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
 			method: "POST",
 			headers: { 
-				"Authorization": process.env.REACT_APP_API_KEY,
+				"Authorization": process.env.NEXT_PUBLIC_API_KEY,
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
