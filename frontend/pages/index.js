@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import Navbar from "../components/Navbar";
 
 
@@ -13,7 +14,7 @@ export default function Home() {
 				<div className="text-center md:text-left">
 					{/* "Title" */}
 					<h1 className="text-5xl md:text-6xl font-extrabold animate-fadeIn">
-						Hi, I'm <span className="text-yellow-300 dark:text-yellow-400">David</span>
+						Hi, I&apos;m <span className="text-yellow-300 dark:text-yellow-400">David</span>
 					</h1>
 					{/* Subline Text */}
 					<p className="mt-4 text-lg md:text-xl max-w-lg text-gray-200 dark:text-gray-400">
@@ -22,18 +23,20 @@ export default function Home() {
 
 					{/* In-Page Buttons to Projects and Contact pages*/}
 					<div className="mt-6 flex flex-col md:flex-row gap-4">
-						<a
+						<Link
 							href="/projects"
 							className="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-md hover:bg-yellow-500 transition-all"
-						>
-							View My Work
-						</a>
-						<a
+						><a>View My Work</a>
+						</Link>
+							
+						
+						
+						<Link
 							href="/contact"
 							className="px-6 py-3 border border-white font-bold rounded-lg hover:bg-white hover:text-blue-700 transition-all"
 						>
-							Get in Touch
-						</a>
+							<a>Get in Touch</a>
+						</Link>
 					</div>
 				</div>
 

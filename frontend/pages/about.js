@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import Image from 'next/image';
 
 export default function About() {
     return (
@@ -15,7 +16,7 @@ export default function About() {
 
                     {/* Profile Picture */}
                     <div className="flex justify-center">
-                        <img
+                        <Image
                             src="/about.jpg"
                             className="w-64 h-90 rounded-lg mx-auto shadow-xl object-cover"
                             alt="David"
@@ -24,7 +25,7 @@ export default function About() {
 
                     {/* Introduction */}
                     <p className="text-gray-700 dark:text-gray-300 text-lg text-center">
-                        Hi! I'm David, a passionate software developer with a background in Computing/Software Development and Management.
+                        Hi! I&apos;m David, a passionate software developer with a background in Computing/Software Development and Management.
                         I love building web applications that solve real-world problems.
                     </p>
 
@@ -41,7 +42,7 @@ export default function About() {
                         <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-300 mb-2">Work Experience</h2>
 
                         <p className="text-gray-600 dark:text-gray-400">
-                            💻 <strong>Freelance Software Development Projects</strong> – Crafted high-performance web applications tailored to my clients' needs. The main project completed
+                            💻 <strong>Freelance Software Development Projects</strong> – Crafted high-performance web applications tailored to my clients&apos; needs. The main project completed
                             is the tournament bracket application. The client was ecstatic with the results, significantly improving the efficiency of their tournaments.
                         </p>
 
@@ -57,9 +58,9 @@ export default function About() {
                         <br />
 
                         <p className="text-gray-600 dark:text-gray-400">
-                            🍕 <strong>Uncle Peteza's Pizzeria</strong> – Manager dedicated to team development, customer satisfaction, and operational excellence.
+                            🍕 <strong>Uncle Peteza&apos;s Pizzeria</strong> – Manager dedicated to team development, customer satisfaction, and operational excellence.
                             Inspired, celebrated, and mentored employees to foster a positive and high-performing work environment.
-                            Enhanced the restaurant's value by actively listening to customer feedback and implementing improvements, ensuring an exceptional dining experience.
+                            Enhanced the restaurant&apos;s value by actively listening to customer feedback and implementing improvements, ensuring an exceptional dining experience.
                         </p>
                     </div>
                 </div>
