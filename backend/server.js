@@ -82,7 +82,7 @@ app.use((req, res, next) => {
   const authHeader = req.headers['authorization'];
 
   // Check if the header exists and matches the API key
-  if (process.env.REACT_APP_API_KEY && authHeader !== process.env.REACT_APP_API_KEY) {
+  if (process.env.API_KEY && authHeader !== process.env.API_KEY) {
     return res.status(403).json({ message: "Forbidden - Invalid or missing API key" });
   }
 

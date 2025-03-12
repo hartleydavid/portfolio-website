@@ -9,16 +9,16 @@ export default function Projects() {
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
 	//const API_KEY = process.env.API_KEY
 
-	console.log("API Key  Out:", API_KEY);
+	console.log("API Key  Out:", process.env.API_KEY);
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
 		
-		console.log("API Key:", API_KEY);  // Log to check the value
+		console.log("API Key:", process.env.API_KEY);  // Log to check the value
 
 		fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
 			method: "POST",
 			headers: { 
-				"Authorization": API_KEY,
+				"Authorization": process.env.API_KEY,
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
