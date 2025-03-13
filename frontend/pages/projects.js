@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { useState, useEffect } from "react";
 
 export default function Projects() {
-	
+
 	const [projects, setProjects] = useState([]);
 	const [filteredProjects, setFilteredProjects] = useState([]);
 	const [statusFilter, setStatusFilter] = useState("");
@@ -10,30 +10,29 @@ export default function Projects() {
 
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
-
-		fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
+		fetch("/api/graphql", {
 			method: "POST",
-			headers: { 
-				"Authorization": process.env.NEXT_PUBLIC_API_KEY,
+			headers: {
 				"Content-Type": "application/json"
 			},
 			body: JSON.stringify({
 				query: `
-	        	query {
-					projects {
-						id
-						title
-						description
-						status
-						technologies
-					}
-	        	}`,
+			  query {
+				projects {
+				  id
+				  title
+				  description
+				  status
+				  technologies
+				}
+			  }
+			`,
 			}),
 		})
 			.then((res) => res.json())
 			.then((data) => {
 				setProjects(data.data.projects);
-				setFilteredProjects(data.data.projects); // Initialize with all projects
+				setFilteredProjects(data.data.projects);
 			})
 			.catch((err) => console.error("Error fetching projects:", err));
 	}, []);
@@ -154,8 +153,8 @@ export default function Projects() {
 									key={tech}
 									onClick={() => toggleTechnology(tech)}
 									className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${selectedTechnologies.includes(tech)
-											? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
-											: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+										? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
+										: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
 										}`}
 								>
 									{tech}
