@@ -10,9 +10,13 @@ export default function Projects() {
 
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
-		fetch("http://localhost:5000/graphql", {
+
+		fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
 			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			headers: { 
+				"Authorization": process.env.NEXT_PUBLIC_API_KEY,
+				"Content-Type": "application/json"
+			},
 			body: JSON.stringify({
 				query: `
 	        	query {

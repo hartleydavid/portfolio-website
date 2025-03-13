@@ -77,6 +77,18 @@ const root = {
 const app = express();
 app.use(cors());
 
+// Simple API key middleware
+app.use((req, res, next) => {
+  const authHeader = req.headers['authorization'];
+
+  // Check if the header exists and matches the API key
+  if (process.env.API_KEY && authHeader !== process.env.API_KEY) {
+    return res.status(403).json({ message: "Forbidden - Invalid or missing API key" });
+  }
+
+  next();
+});
+
 // Set up GraphQL API
 app.use("/graphql", graphqlHTTP({
 	schema,

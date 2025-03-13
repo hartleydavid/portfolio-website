@@ -23,7 +23,7 @@ const Navbar = () => {
         <nav className="w-full bg-gray-900 dark:bg-gray-800 text-white p-4 shadow-md fixed top-0 left-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
                 {/* Title */}
-                <h1 className="text-2xl font-bold">David's Portfolio</h1>
+                <h1 className="text-2xl font-bold">David&apos;s Portfolio</h1>
 
                 {/* Desktop Navigation */}
                 <ul className="hidden md:flex space-x-6">
