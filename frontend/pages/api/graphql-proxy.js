@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
     //Try to call API
     try {
-
+        //Get response from the API
         const response = await fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
             method: "POST",
             headers: {
