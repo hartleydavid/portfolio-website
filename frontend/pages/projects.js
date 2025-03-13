@@ -10,7 +10,7 @@ export default function Projects() {
 
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
-		fetch("/api/graphql", {
+		fetch("/api/graphql-proxy", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"

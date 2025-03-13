@@ -1,13 +1,26 @@
 export default async function handler(req, res) {
-    const response = await fetch(process.env.BACKEND_GRAPHQL_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": process.env.NEXT_PUBLIC_API_KEY, // Your secret API key
-      },
-      body: JSON.stringify(req.body),
-    });
-  
-    const data = await response.json();
-    res.status(200).json(data);
-  }
+    //Only POST methods
+    if (req.method !== "POST") {
+        return res.status(405).json({ error: "Method not allowed" }); 
+    }
+
+    //Try to call API
+    try {
+
+        const response = await fetch("https://portfolio-website-ot1g.onrender.com/graphql", {
+            method: "POST",
+            headers: {
+                Authorization: process.env.API_KEY,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(req.body),
+        });
+
+        const data = await response.json();
+        res.status(200).json(data);
+    //Catch any error as proxy error
+    } catch (err) {
+        console.error("Proxy error:", err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
