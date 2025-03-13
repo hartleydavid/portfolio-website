@@ -15,7 +15,7 @@ export default function Contact() {
                         Contact Me
                     </h1>
                     <p className="text-gray-600 dark:text-gray-200 text-center mb-8">
-                        Feel free to reach out via email or connect with me on LinkedIn and GitHub.
+                        Feel free to reach out via email or connect with me on LinkedIn.
                     </p>
 
                     {/* Contact Links */}
@@ -38,15 +38,6 @@ export default function Contact() {
                             <FaLinkedin className="w-5 h-5" /> LinkedIn
                         </a>
 
-                        {/* GitHub Link*/}
-                        <a
-                            href="https://github.com/hartleydavid"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-3 px-4 py-3 bg-gray-800 text-white font-semibold rounded-lg shadow-md hover:bg-gray-900 transition-all duration-300"
-                        >
-                            <FaGithub className="w-5 h-5" /> GitHub
-                        </a>
                     </div>
                 </div>
             </div>
