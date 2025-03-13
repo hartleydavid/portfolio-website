@@ -1,4 +1,4 @@
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaEnvelope } from "react-icons/fa";
 import Navbar from "../components/Navbar"; // Ensure this is the correct path
 
 export default function Contact() {
