@@ -8,7 +8,7 @@ mutation {
       title: "Portfolio Website", 
       description: "Website displaying my experience and work for users to view and contact me if desired.", 
       status: "Complete", 
-      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Github", "JavaScript", "TypeScript", "Tailwind CSS"] 
+      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "MongoDB Atlas", "Vercel", "Render""Github", "JavaScript", "TypeScript", "Tailwind CSS"] 
     },
     { 
       title: "Tournament Bracket Website", 
