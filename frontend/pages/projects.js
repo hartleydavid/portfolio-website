@@ -10,6 +10,9 @@ export default function Projects() {
 	const [filteredProjects, setFilteredProjects] = useState([]);
 	const [statusFilter, setStatusFilter] = useState("");
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
+	//Used for the "Projects missing message"
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
 
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
 	useEffect(() => {
@@ -211,8 +214,34 @@ export default function Projects() {
 						</div>
 					))}
 				</div>
+				{/* Projects not appearing message modal */}
+				<div className="text-center mt-8">
+					<button
+						onClick={() => setIsModalOpen(true)}
+						className="text-sm text-blue-600 hover:underline"
+					>
+						Projects not appearing?
+					</button>
+					{isModalOpen && (
+						<div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+							<div className="bg-gray-900 border border-gray-700 text-gray-100 p-6 rounded-lg shadow-lg w-[90%] max-w-md">
+								<h2 className="text-xl font-semibold mb-4 text-blue-400">Projects not appearing?</h2>
+								<p className="text-sm text-gray-300 mb-4 leading-relaxed">
+									As I am using a database with my backend, after enough inactivity the database will need to spin back up. 
+									Refreshing the page after a few seconds will do the trick!
+								</p>
+								<button
+									onClick={() => setIsModalOpen(false)}
+									className="mt-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm font-medium rounded transition-colors"
+								>
+									Close
+								</button>
+							</div>
+						</div>
+					)}
 
-				
+				</div>
+
 			</div>
 		</div>
 	);
