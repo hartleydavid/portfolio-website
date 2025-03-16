@@ -7,11 +7,17 @@ import { useState, useEffect } from "react";
 export default function Projects() {
 
 	const [projects, setProjects] = useState([]);
+	//Showing the filters on the projects page
+	const [showFilters, setShowFilters] = useState(false);
+	//The filtered projects list
 	const [filteredProjects, setFilteredProjects] = useState([]);
+	//The filter on the status of the project (complete, in progess, planned)
 	const [statusFilter, setStatusFilter] = useState("");
+	//The technologies selected to filter by
 	const [selectedTechnologies, setSelectedTechnologies] = useState([]);
 	//Used for the "Projects missing message"
 	const [isModalOpen, setIsModalOpen] = useState(false);
+
 
 
 	//Use effect to fetch the projects from our graphQL API (POST as we are making a query to GraphQL)
@@ -137,7 +143,7 @@ export default function Projects() {
 				{/* Filters Section */}
 				<div className="max-w-7xl mx-auto flex flex-col md:flex-col items-center justify-between mb-10 space-y-4">
 
-					{/* GitHub Link*/}
+					{/* GitHub Link */}
 					<Link
 						href="https://github.com/hartleydavid"
 						target="_blank"
@@ -146,38 +152,52 @@ export default function Projects() {
 						<FaGithub className="w-5 h-5" /> GitHub
 					</Link>
 
-					{/* Status Dropdown */}
-					<div className="w-full md:w-auto">
-						<select
-							onChange={handleStatusChange}
-							value={statusFilter}
-							className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring focus:ring-blue-300 w-full"
+					{/* Toggle Filters Button */}
+					<div className="flex justify-end w-full md:w-auto">
+						<button
+							onClick={() => setShowFilters(!showFilters)}
+							className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring focus:ring-blue-300"
 						>
-							<option value="">All Projects</option>
-							<option value="Complete">Completed</option>
-							<option value="In Progress">In Progress</option>
-							<option value="Planned">Planned</option>
-						</select>
+							{showFilters ? "Hide Filters" : "Show Filters"}
+						</button>
 					</div>
 
-					{/* Technology Filter */}
-					<div className="w-full md:w-auto">
-						<div className="flex flex-wrap gap-2 mt-2">
-							{/* As we select tech to filter, update the technologies filter of our dataset */}
-							{allTechnologies.map((tech) => (
-								<button
-									key={tech}
-									onClick={() => toggleTechnology(tech)}
-									className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${selectedTechnologies.includes(tech)
-										? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
-										: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
-										}`}
+					{/* Conditionally Render Filters */}
+					{showFilters && (
+						<div className="w-full flex flex-col gap-4">
+							{/* Status Dropdown */}
+							<div className="flex justify-center w-full">
+								<select
+									onChange={handleStatusChange}
+									value={statusFilter}
+									className="border border-gray-300 dark:border-gray-600 rounded-md px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200 focus:ring focus:ring-blue-300 w-auto"
 								>
-									{tech}
-								</button>
-							))}
+									<option value="">All Projects</option>
+									<option value="Complete">Completed</option>
+									<option value="In Progress">In Progress</option>
+									<option value="Planned">Planned</option>
+								</select>
+							</div>
+
+							{/* Technology Filter */}
+							<div className="w-full md:w-auto">
+								<div className="flex flex-wrap gap-2 mt-2">
+									{allTechnologies.map((tech) => (
+										<button
+											key={tech}
+											onClick={() => toggleTechnology(tech)}
+											className={`px-3 py-1 text-sm rounded-full transition-all duration-300 ${selectedTechnologies.includes(tech)
+												? "bg-blue-500 text-white dark:bg-blue-400 dark:text-gray-900"
+												: "bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300"
+												}`}
+										>
+											{tech}
+										</button>
+									))}
+								</div>
+							</div>
 						</div>
-					</div>
+					)}
 				</div>
 
 				{/* Project Cards */}
@@ -227,7 +247,7 @@ export default function Projects() {
 							<div className="bg-gray-900 border border-gray-700 text-gray-100 p-6 rounded-lg shadow-lg w-[90%] max-w-md">
 								<h2 className="text-xl font-semibold mb-4 text-blue-400">Projects not appearing?</h2>
 								<p className="text-sm text-gray-300 mb-4 leading-relaxed">
-									As I am using a database with my backend, after enough inactivity the database will need to spin back up. 
+									As I am using a database with my backend, after enough inactivity the database will need to spin back up.
 									Refreshing the page after a few seconds will do the trick!
 								</p>
 								<button
