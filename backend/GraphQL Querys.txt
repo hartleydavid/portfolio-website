@@ -5,38 +5,44 @@ mutation {
 mutation {
   addMultipleProjects(projects: [
     { 
+      title: "Elimination Raffle Wheel Webpage", 
+      description: "Simple Raffle wheel where users can add a list of names to the wheel and each spin that name is removed from the wheel.", 
+      status: "In Progress", 
+      technologies: ["Github", "JavaScript", "HTML", "CSS"] 
+    },
+    { 
       title: "Portfolio Website", 
-      description: "Website displaying my experience and work for users to view and contact me if desired.", 
+      description: "Website designed and developed to showcase my professional experience, technical skills, and projects.", 
       status: "Complete", 
-      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "MongoDB Atlas", "Vercel", "Render""Github", "JavaScript", "TypeScript", "Tailwind CSS"] 
+      technologies: ["React", "Node.js", "GraphQL", "Docker", "MongoDB", "Vercel", "Render", "Github", "JavaScript", "TypeScript", "Tailwind CSS"] 
     },
     { 
       title: "Tournament Bracket Website", 
-      description: "End-to-end website for users to generate their own tournament brackets and be able to interact with them. Designed for a freelance project and is specifically tailored to customers' design needs", 
+      description: "End-to-end project for users to generate 16-player tournament brackets. Designed as a freelance project and was specifically designed to customers' design requirements.", 
       status: "Complete", 
       technologies: ["Azure", "BlobStorage", "ASP.NET Core", "MVC Architecture", "Azure SQL Server", "Azure Database", "Github", "C#", "MySQL", "JavaScript", "HTML", "CSS"] 
     },
     { 
       title: "Weather App", 
-      description: "A weather application that will display weather information to users based on a specific date in the future and a pinned loaction on a map.", 
+      description: "A simple weather app website that will display weather information to users based on a selected date and pinning a loaction on a map.", 
       status: "Complete", 
       technologies: ["React", "Google Maps API", "Github", "JavaScript", "HTML", "CSS"] 
     },
     { 
       title: "Serverless Web Application on AWS", 
-      description: "Website that is deployed on AWS that is a serverless, static website using many of AWS's tools and technologies.", 
+      description: "Simple static website that is deployed via AWS. Designed to be serverless using many of AWS's tools and technologies to achieve this.", 
       status: "Complete", 
       technologies: ["AWS", "AWS Lambda", "S3 Bucket", "AWS RDS", "API Gateways", "REST API", "Github", "MySQL", "Python", "HTML", "CSS"] 
     },
     { 
-      title: "IMBD Clone Webpage", 
-      description: "Webpage that simulates IMBD's website, displaying popular show and movie data to the user. Dynamic webpage seamlessly integrating external API's to enhance user experience with real-time data.", 
+      title: "IMDb Clone Webpage", 
+      description: "Webpage that simulates IMDb's website, displaying popular show and movie data to the user. Dynamic webpage seamlessly integrating external API's to enhance user experience with real-time data.", 
       status: "Complete", 
       technologies: ["Azure", "ASP.NET Core", "MVC Architecture", "Azure SQL Server", "Azure Database", "Identity Frameworks", "TMBD API", "Github", "C#", "JavaScript", "MySQL", "HTML", "CSS"] 
     },
     { 
       title: "AI for Tic-Tac-Toe Game", 
-      description: "Developed a Game Tree AI and Cup AI for a locally ran Tic-Tac-Toe game via console or GUI. Users can chose difficulty of AI, which allows AI to play hundreds of games on a background thread to learn moves. ", 
+      description: "Developed a Game Tree AI and Cup AI for a locally ran Tic-Tac-Toe game via console or GUI. Users can chose difficulty of AI, which allows AI to play hundreds of games on a background thread to learn moves.", 
       status: "Complete", 
       technologies: ["Artifical Intelligence", "Swing UI", "Multi-Threading", "Github", "Java"] 
     },
@@ -51,12 +57,6 @@ mutation {
       description: "Very simple 2D plaformer video game developed and ran through the Unity engine using Untiy assets.", 
       status: "Complete", 
       technologies: ["Unity", "Github", "C#"] 
-    },
-    { 
-      title: "Elimination Raffle Wheel Webpage", 
-      description: "Simple Raffle wheel where users can add a list of names to the wheel and each spin that name is removed from the wheel.", 
-      status: "In Progress", 
-      technologies: ["Github", "JavaScript", "HTML", "CSS"] 
     },
     
   ]) {
