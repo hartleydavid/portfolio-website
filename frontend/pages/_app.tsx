@@ -1,4 +1,5 @@
 import "../styles/globals.css";
+import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from "next/app";
 import { useState, useEffect, createContext, useContext } from "react";
 
@@ -59,6 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<DarkModeContext.Provider value={{ darkMode, toggleDarkMode }}>
 			<Component {...pageProps} />
+			<Analytics />
 		</DarkModeContext.Provider>
 	);
 }
